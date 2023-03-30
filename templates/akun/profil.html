@@ -1,0 +1,22 @@
+{% extends 'akun/base.html' %}
+{% block title %}
+<title>{{judul}}</title>
+{% endblock title %}
+
+    {% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>{{judul}}</h1>
+    <h3>{{nama}}</h3>
+    <h2>Update Profile</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+    {% endblock content %}

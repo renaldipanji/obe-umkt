@@ -1,0 +1,186 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+{% include "main/sidebar.html" %}
+    <main class="bg-[#F2F7FF] min-h-screen lg:ml-60 flex w-full">
+        <div class="absolute lg:hidden left-0 top-0 h-full w-full bg-black/30 z-[15]" @click="showMenu = false" x-show="showMenu" x-transition.opacity.duration.500ms>
+        </div>
+        <section class="flex-1 py-6 px-4 md:px-4 lg:px-8">
+            <!-- Header -->
+            {% include "main/header.html" %}
+            <div class="mt-8">
+                <div class="flex items-center justify-between">
+                    <h3 class="py-4 text-[#435EBE] text-xl font-bold">Capaian Pembelajaran Lulusan: Individu</h3>
+                    <div>
+                        <span class="pr-2">Tipe CPL:</span>
+                        <button class="bg-[#435EBE] rounded px-2 py-1 text-white  hover:scale-105 duration-300 shadow-sm">
+                            <a href="dashboard.html">Individu</a>
+                        </button>
+                        <button class="bg-[#435EBE] rounded px-2 py-1 text-white  hover:scale-105 duration-300 shadow-sm">
+                            <a href="dashboard.html">Angkatan</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap bg-[#435EBE] shadow rounded-lg py-4 px-3 gap-4 justify-center">
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-white">Fakultas</label>
+                    <select class="bg-gray-50 border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih fakultas</option>
+                        <option value="FST">Sains dan teknologi</option>
+                        <option value="FKIP">Ilmu keguruan dan pendidikan</option>
+                        <option value="Farmasi">Farmasi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program studi</label>
+                    <select class="bg-gray-50 border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih program studi</option>
+                        <option value="TI">Teknik informatika</option>
+                        <option value="TM">Teknik mesin</option>
+                        <option value="TS">Teknik sipil</option>
+                        <option value="TG">Teknik geologi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Angkatan</label>
+                    <select class="bg-gray-50 border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih angkatan</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama mahasiswa</label>
+                    <select class="bg-gray-50 border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih mahasiswa</option>
+                        <option value="A">Mahasiswa A</option>
+                        <option value="B">Mahasiswa B</option>
+                        <option value="C">Mahasiswa C</option>
+                        <option value="D">Mahasiswa D</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hitung</label>
+                    <a href="" class="flex bg-[#55C6E8] rounded-lg px-3 p-2.5 text-white justify-center font-bold hover:scale-105 duration-300 shadow-lg">Hitung CPL</a>
+                </div>               
+            </div>
+            <div class="flex flex-wrap">
+                <div class="grow mt-4 overflow-hidden bg-white shadow-lg rounded-lg">
+                    <canvas class="p-4 justify-center" id="chartBar"></canvas>
+                </div>
+            </div>            
+            <div class="relative overflow-hidden shadow-md sm:rounded-lg mt-4">
+                <table class="w-full text-sm text-left text-white">
+                    <thead class="text-xs text-white uppercase bg-[#435EBE]">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center justify-center">
+                                    CPL
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center justify-center">
+                                    Deskripsi CPL
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center justify-center">
+                                    Nilai CPL
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b text-black">
+                            <td class="px-6 py-4">
+                                1
+                            </td>
+                            <td class="px-6 py-4">
+                                Menguasai konsep teoretis sains alam, aplikasi matematika rekayasa; prinsip-prinsip rekayasa (engineering fundamentals), sains rekayasa dan perancangan rekayasa yang diperlukan untuk analisis dan perancangan sistem terintegrasi
+                            </td>
+                            <td class="px-6 py-4">
+                                50.5
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b text-black">
+                            <td class="px-6 py-4">
+                                2
+                            </td>
+                            <td class="px-6 py-4">
+                                Menguasai konsep teoretis sains alam, aplikasi matematika rekayasa; prinsip-prinsip rekayasa (engineering fundamentals), sains rekayasa dan perancangan rekayasa yang diperlukan untuk analisis dan perancangan sistem terintegrasi
+                            </td>
+                            <td class="px-6 py-4">
+                                50.5
+                            </td>
+                        </tr>
+                        <tr class="bg-white text-black">
+                            <td class="px-6 py-4">
+                                3
+                            </td>
+                            <td class="px-6 py-4">
+                                Menguasai konsep teoretis sains alam, aplikasi matematika rekayasa; prinsip-prinsip rekayasa (engineering fundamentals), sains rekayasa dan perancangan rekayasa yang diperlukan untuk analisis dan perancangan sistem terintegrasi
+                            </td>
+                            <td class="px-6 py-4">
+                                50.5
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+</body>
+<!-- Required chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                  
+<!-- Chart bar -->
+<script>
+  const labelsBarChart = [
+    "CPL 1",
+    "CPL 2",
+    "CPL 3",
+    "CPL 4",
+    "CPL 5",
+    "CPL 6",
+    "CPL 7",
+    "CPL 8",
+    "CPL 9",
+    "CPL 10",
+    "CPL 11",
+    "CPL 12",
+    "CPL 13",
+    "CPL 14",
+    "CPL 15",
+  ];
+  const dataBarChart = {
+    labels: labelsBarChart,
+    datasets: [
+      {
+        label: "%Pemenuhan CPL",
+        backgroundColor: "hsl(107, 76%, 50%)",
+        borderColor: "hsl(107, 76%, 50%)",
+        data: [78, 69, 87, 79, 68, 90, 67, 79, 89, 86, 59, 79, 59, 69, 89],
+      },
+      {
+        label: "%CPL Minimum",
+        backgroundColor: "hsl(47, 91%, 50%)",
+        borderColor: "hsl(47, 91%, 50%)",
+        data: [89, 96, 89, 95, 96, 94, 87, 89, 89, 96, 92, 79, 96, 69, 89],
+      },
+    ],
+  };
+
+  const configBarChart = {
+    type: "bar",
+    data: dataBarChart,
+    options: {},
+  };
+
+  var chartBar = new Chart(
+    document.getElementById("chartBar"),
+    configBarChart
+  );
+</script>
+{% endblock content %}

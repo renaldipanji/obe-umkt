@@ -1,0 +1,220 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+{% include "main/sidebar.html" %}
+    <main class="bg-[#F2F7FF] min-h-screen lg:ml-60 flex w-full">
+        <div class="absolute lg:hidden left-0 top-0 h-full w-full bg-black/30 z-[15]" @click="showMenu = false" x-show="showMenu" x-transition.opacity.duration.500ms>
+        </div>
+        <section class="flex-1 py-6 px-4 md:px-4 lg:px-8">
+            <!-- Header -->
+            {% include "main/header.html" %}
+            <div class="mt-8">
+                <div class="flex items-center justify-self-start">
+                    <h3 class="py-4 text-[#435EBE] text-xl font-bold">Nilai</h3>
+                    
+                </div>
+            </div>
+            <div class="flex flex-wrap bg-[#F5BB4B] shadow rounded-lg py-4 px-3 gap-4 justify-center">
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-white">Fakultas</label>
+                    <select class="bg-gray-50 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih fakultas</option>
+                        <option value="FST">Sains dan teknologi</option>
+                        <option value="FKIP">Ilmu keguruan dan pendidikan</option>
+                        <option value="Farmasi">Farmasi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program studi</label>
+                    <select class="bg-gray-50 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih program studi</option>
+                        <option value="TI">Teknik informatika</option>
+                        <option value="TM">Teknik mesin</option>
+                        <option value="TS">Teknik sipil</option>
+                        <option value="TG">Teknik geologi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Angkatan</label>
+                    <select class="bg-gray-50 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih angkatan</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                    </select>
+                </div>
+
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Aksi</label>
+                    <a href="" class="flex bg-[#55C6E8] rounded-lg px-3 p-2.5 text-white justify-center font-bold hover:scale-105 duration-300 shadow-lg">Proses</a>
+                </div>               
+            </div>
+            <div class="mt-2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <button class="bg-[#48B688] rounded-md px-4 py-1 text-white  hover:scale-105 duration-300 shadow-sm">
+                            <a href="#">Download form nilai</a>
+                        </button>
+                    </div>
+                    <div>
+                        <input type="file">
+                        <button class="bg-[#435EBE] rounded-md px-4 py-1 text-white  hover:scale-105 duration-300 shadow-sm">
+                            <a href="#">Upload nilai</a>
+                        </button>
+                        <button class="bg-[#FF7979] rounded-md px-4 py-1 text-white  hover:scale-105 duration-300 shadow-sm">
+                            <a href="#">Reset nilai</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-2">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-white uppercase bg-[#48B688] text-center">
+                        <tr class="border border-b-0.5">
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th class="py-3">CPMK 1</th>
+                            <th class="py-3">CPMK 2</th>
+                            <th class="py-3">CPMK 3</th>
+                            <th class="py-3">CPMK 4</th>
+                            <th class="py-3">CPMK 5</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Nim
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Nama
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                10
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                35
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                25
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                10
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                20
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                Nilai angka
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Nilai huruf
+                            </th> 
+                        </tr>
+                    </thead>
+                    <tbody class="text-black">
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center items-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                1
+                            </th>
+                            <td class="px-6 py-4">
+                                181110241234
+                            </td>
+                            <td class="px-6 py-4">
+                                Mahasiswa A
+                            </td>
+                            <td class="px-6 py-4">
+                                75
+                            </td>
+                            <td class="px-6 py-4">
+                                60
+                            </td>
+                            <td class="px-6 py-4">
+                                80
+                            </td>
+                            <td class="px-6 py-4">
+                                95
+                            </td>
+                            <td class="px-6 py-4">
+                                80
+                            </td>
+                            <td class="px-6 py-4">
+                                86
+                            </td>
+                            <td class="px-6 py-4">
+                                AB
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center items-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                2
+                            </th>
+                            <td class="px-6 py-4">
+                                181110241234
+                            </td>
+                            <td class="px-6 py-4">
+                                Mahasiswa B
+                            </td>
+                            <td class="px-6 py-4">
+                                75
+                            </td>
+                            <td class="px-6 py-4">
+                                60
+                            </td>
+                            <td class="px-6 py-4">
+                                80
+                            </td>
+                            <td class="px-6 py-4">
+                                95
+                            </td>
+                            <td class="px-6 py-4">
+                                80
+                            </td>
+                            <td class="px-6 py-4">
+                                86
+                            </td>
+                            <td class="px-6 py-4">
+                                AB
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center items-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                3
+                            </th>
+                            <td class="px-6 py-4">
+                                181110241234
+                            </td>
+                            <td class="px-6 py-4">
+                                Mahasiswa C
+                            </td>
+                            <td class="px-6 py-4">
+                                75
+                            </td>
+                            <td class="px-6 py-4">
+                                60
+                            </td>
+                            <td class="px-6 py-4">
+                                80
+                            </td>
+                            <td class="px-6 py-4">
+                                95
+                            </td>
+                            <td class="px-6 py-4">
+                                80
+                            </td>
+                            <td class="px-6 py-4">
+                                86
+                            </td>
+                            <td class="px-6 py-4">
+                                AB
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock content %}

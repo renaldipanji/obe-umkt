@@ -1,0 +1,202 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+{% include "main/sidebar.html" %}
+    <main class="bg-[#F2F7FF] min-h-screen lg:ml-60 flex w-full">
+        <div class="absolute lg:hidden left-0 top-0 h-full w-full bg-black/30 z-[15]" @click="showMenu = false" x-show="showMenu" x-transition.opacity.duration.500ms>
+        </div>
+        <section class="flex-1 py-6 px-4 md:px-4 lg:px-8">
+            <!-- Header -->
+            {% include "main/header.html" %}
+            <div class="mt-8">
+                <div class="flex items-center justify-self-start">
+                    <h3 class="py-4 text-[#435EBE] text-xl font-bold">Daftar seluruh mata kuliah</h3>  
+                </div>
+            </div>
+            <div class="flex flex-wrap bg-[#F5BB4B] shadow rounded-lg py-4 px-3 gap-4 justify-center">
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-white">Fakultas</label>
+                    <select class="bg-gray-50 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option >Pilih fakultas</option>
+                        <option value="FST" selected>Sains dan teknologi</option>
+                        <option value="FKIP">Ilmu keguruan dan pendidikan</option>
+                        <option value="Farmasi">Farmasi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program studi</label>
+                    <select class="bg-gray-50 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih program studi</option>
+                        <option value="D3KL">D3 - Kesehatan Lingkungan</option>
+                        <option value="S1KP">D3 - Keperawatan</option>
+                        <option value="S1KM">S1 - Ilmu Keperawatan</option>
+                        <option value="S1FRM">S1 - Farmasi</option>
+                        <option value="PN">Profesi Ners</option>
+                        <option value="S1HI">S1 - Hubungan Internasional</option>
+                        <option value="S1HK">S1 - Hukum</option>
+                        <option value="S1MNJ">S1 - Manajemen</option>
+                        <option value="S1PSI">S1 - Psikologi</option>
+                        <option value="S1PBI">S1 - Pendidikan Bahasa Inggris</option>
+                        <option value="S1POR">S1 - Pendidikan Olah Raga</option>
+                        <option value="S1TI">S1 - Teknik Informatika</option>
+                        <option value="S1TM">S1 - Teknik Mesin</option>
+                        <option value="S1TS">S1 - Teknik Sipil</option>
+                        <option value="S1TG">S1 - Teknik Geologi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Proses</label>
+                    <a href="" class="flex bg-[#55C6E8] rounded-lg px-3 p-2.5 text-white justify-center font-bold hover:scale-105 duration-300 shadow-lg">Proses</a>
+                </div>               
+            </div>
+            <div class="mt-2">
+                <div class="flex items-center justify-end">
+                    <div>
+                        <span class="pr-2">Tambah mata kuliah :</span>
+                        <button class="bg-[#48B688] rounded-md px-4 py-1 text-white  hover:scale-105 duration-300 shadow-sm">
+                            <a href="tambah-mata-kuliah.html">Tambah</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-2">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-white uppercase bg-[#435EBE] text-center">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Kode MK
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Nama MK
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                SKS
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Semester
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Keterangan
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                CPL Pengukur
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-black">
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                INF1234
+                            </th>
+                            <td class="px-6 py-4 text-left">
+                                Sistem Operasi
+                            </td>
+                            <td class="px-6 py-4">
+                                1
+                            </td>
+                            <td class="px-6 py-4">
+                                6
+                            </td>
+                            <td class="px-6 py-4">
+                                Wajib
+                            </td>
+                            <td class="px-6 py-4">
+                                Ya
+                            </td>
+                            <td class="flex px-6 py-4 justify-between text-center">
+                                <div class="flex-1">
+                                    <a href="tambah-mata-kuliah.html" class="font-medium text-blue-600 hover:underline">Edit</a>
+                                </div>
+                                <div class="flex-1">
+                                    <a href="#" class="modal-open font-semibold text-red-400 hover:underline">Hapus</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div> 
+        </section>
+    </main>
+    <!--Modal-->
+    <div class="modal opacity-0 transition duration-700 ease-in-out pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-lg z-50 overflow-y-auto">
+        
+            <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                </svg>
+                <span class="text-sm">(Esc)</span>
+            </div>
+
+            <!-- Add margin if you want to see some of the overlay behind the modal-->
+            <div class="modal-content py-4 text-left px-6">
+                <!--Title-->
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Konfirmasi hapus</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!--Body-->
+                <p>Apakah anda yakin ingin menghapus mata kuliah:</p>
+                <p class="text-red-400 font-bold">INF1234 - Sistem Operasi</p>
+
+                <!--Footer-->
+                <div class="flex justify-end pt-2">
+                    <button class="flex-1 px-4 bg-transparent p-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:scale-105 duration-300 mr-2">Batal</button>
+                    <button class="flex-1 modal-close px-4 bg-red-500 p-3 rounded-lg text-white hover:scale-105 duration-300">Hapus</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // script modal
+    var openmodal = document.querySelectorAll('.modal-open')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+    	event.preventDefault()
+    	toggleModal()
+      })
+    }
+    
+    const overlay = document.querySelector('.modal-overlay')
+    overlay.addEventListener('click', toggleModal)
+    
+    var closemodal = document.querySelectorAll('.modal-close')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleModal)
+    }
+    
+    document.onkeydown = function(evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+    	isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-active')) {
+    	toggleModal()
+      }
+    };
+    
+    
+    function toggleModal () {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.modal')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-active')
+    }
+</script>
+{% endblock content %}

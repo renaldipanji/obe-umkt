@@ -1,0 +1,106 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+{% include "main/sidebar.html" %}
+    <main class="bg-[#F2F7FF] min-h-screen lg:ml-60 flex w-full">
+        <div class="absolute lg:hidden left-0 top-0 h-full w-full bg-black/30 z-[15]" @click="showMenu = false" x-show="showMenu" x-transition.opacity.duration.500ms>
+        </div>
+        <section class="flex-1 py-6 px-4 md:px-4 lg:px-8">
+            <!-- Header -->
+            {% include "main/header.html" %}
+            <div class="mt-8">
+                <div class="flex items-center justify-self-start">
+                    <h3 class="py-4 text-[#435EBE] text-xl font-bold">Daftar mata kuliah pengukur</h3>  
+                </div>
+            </div>
+            <div class="flex flex-wrap bg-[#F5BB4B] shadow rounded-lg py-4 px-3 gap-4 justify-center">
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-white">Fakultas</label>
+                    <select class="bg-gray-50 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option >Pilih fakultas</option>
+                        <option value="FST" selected>Sains dan teknologi</option>
+                        <option value="FKIP">Ilmu keguruan dan pendidikan</option>
+                        <option value="Farmasi">Farmasi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program studi</label>
+                    <select class="bg-gray-50 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Pilih program studi</option>
+                        <option value="D3KL">D3 - Kesehatan Lingkungan</option>
+                        <option value="S1KP">D3 - Keperawatan</option>
+                        <option value="S1KM">S1 - Ilmu Keperawatan</option>
+                        <option value="S1FRM">S1 - Farmasi</option>
+                        <option value="PN">Profesi Ners</option>
+                        <option value="S1HI">S1 - Hubungan Internasional</option>
+                        <option value="S1HK">S1 - Hukum</option>
+                        <option value="S1MNJ">S1 - Manajemen</option>
+                        <option value="S1PSI">S1 - Psikologi</option>
+                        <option value="S1PBI">S1 - Pendidikan Bahasa Inggris</option>
+                        <option value="S1POR">S1 - Pendidikan Olah Raga</option>
+                        <option value="S1TI">S1 - Teknik Informatika</option>
+                        <option value="S1TM">S1 - Teknik Mesin</option>
+                        <option value="S1TS">S1 - Teknik Sipil</option>
+                        <option value="S1TG">S1 - Teknik Geologi</option>
+                    </select>
+                </div>
+                <div class="flex-auto">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Proses</label>
+                    <a href="" class="flex bg-[#55C6E8] rounded-lg px-3 p-2.5 text-white justify-center font-bold hover:scale-105 duration-300 shadow-lg">Proses</a>
+                </div>               
+            </div>
+            
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-white uppercase bg-[#435EBE] text-center">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Kode MK
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Nama MK
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                SKS
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Semester
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Keterangan
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-black">
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                INF1234
+                            </th>
+                            <td class="px-6 py-4 text-left">
+                                Sistem Operasi
+                            </td>
+                            <td class="px-6 py-4">
+                                1
+                            </td>
+                            <td class="px-6 py-4">
+                                6
+                            </td>
+                            <td class="px-6 py-4">
+                                Wajib
+                            </td>
+                            <td class="flex px-6 py-4 justify-between text-center">
+                                <div class="flex-1">
+                                    <a href="lihat-mata-kuliah-pengukur.html" class="font-medium text-blue-600 hover:underline">Lihat RPS</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock content %}

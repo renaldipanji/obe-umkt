@@ -1,0 +1,28 @@
+{% load static %}   
+   <!-- Header -->
+    <div class="flex items-center justify-end">
+        <div class="flex justify-items-end space-x-4 ">
+            <div class="flex-auto">
+                <a href="edit-profile.html" class=" text-[#435EBE] flex items-start hover:text-[#364c9d]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#435EBE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+                    <span class="pl-2 font-semibold text-center">Edit profil</span>
+                </a>
+            </div>
+            <div class="flex-auto">
+                <form action="{% url 'akun:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button href="login.html" class=" text-red-400 flex items-start hover:text-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"/></svg>
+                        <span class="pl-2 font-semibold text-center">Logout</span>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Menu button on small screen -->
+            <button class="lg:hidden bg-gray-50 p-2 text-gray-600 rounded hover:bg-gray-300 focus:text-primary outline-none focus:drop-shadow" @click="showMenu = !showMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm7 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                    </svg>                                                   
+            </button>
+        </div>
+    </div>

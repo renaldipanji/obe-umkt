@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.is_active.as_hidden}}
+    <h1>Username</h1>
+    {{form.username}}
+    <h1>email</h1>
+    {{form.email}}
+    <h1>Nama</h1>
+    {{form.nama}}
+    <h1>Password</h1>
+    {{form.password1}}
+    <h1>Password Confirmation</h1>
+    {{form.password2}}
+    <button type="submit">Daftar</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+<script>
+    $('#id_is_active').val('False');
+</script>
+{% endblock content %}
