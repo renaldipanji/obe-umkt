@@ -10,20 +10,19 @@ class RegisterForm(UserCreationForm):
 
         widgets = {
             'email' : forms.TextInput(attrs={
-                'class':'input100 email'
+                'class':'p-2 rounded-lg border',
+                'placeholder' : 'Email'
             }),
             'is_active' : forms.HiddenInput(),
-            'nama' : forms.TextInput(attrs={
-                'class':'input100',
-            }),
             'username' : forms.TextInput(attrs={
-                'class':'input100'
+                'class':'p-2 mt-8 rounded-lg border',
+                'placeholder': 'Username'
             }),
             'password1' : forms.PasswordInput(attrs={
-                'class':'input100'
+                'class':'p-2 rounded-lg border w-full'
             }),
             'password2' : forms.PasswordInput(attrs={
-                'class':'input100'
+                'class':'p-2 rounded-lg border w-full'
             }),
         }
 
