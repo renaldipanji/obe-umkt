@@ -75,28 +75,30 @@
                         </tr>
                     </thead>
                     <tbody class="text-black">
+                        {% for matkul in matkuls %}
                         <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                INF1234
+                                {{matkul.kode_matkul}}
                             </th>
                             <td class="px-6 py-4 text-left">
-                                Sistem Operasi
+                                {{matkul.nama}}
                             </td>
                             <td class="px-6 py-4">
-                                1
+                                {{matkul.jumlah_sks}}
                             </td>
                             <td class="px-6 py-4">
-                                6
+                                {{matkul.semester}}
                             </td>
                             <td class="px-6 py-4">
-                                Wajib
+                                {{matkul.keterangan}}
                             </td>
                             <td class="flex px-6 py-4 justify-between text-center">
                                 <div class="flex-1">
-                                    <a href="lihat-mata-kuliah-pengukur.html" class="font-medium text-blue-600 hover:underline">Lihat RPS</a>
+                                    <a href="{% url 'obe:detail_matkul_pengukur' matkul.id %}" class="font-medium text-blue-600 hover:underline">Lihat RPS</a>
                                 </div>
                             </td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>  
             </div>

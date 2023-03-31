@@ -29,14 +29,6 @@ class CplMapPageView(LoginRequiredMixin,TemplateView):
         context['nama'] = self.request.user.nama
         return context
 
-class MatkulPageView(LoginRequiredMixin,TemplateView):
-    template_name = 'main/daftar_mata_kuliah.html'
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Daftar mata kuliah | OBE UMKT'
-        context['nama'] = self.request.user.nama
-        return context
-
 class RekapNilaiPageView(LoginRequiredMixin,TemplateView):
     template_name = 'main/rekap_nilai.html'
     def get_context_data(self, **kwargs):
@@ -59,32 +51,59 @@ class NilaiPageView(LoginRequiredMixin,TemplateView):
         context['title'] = 'Nilai | OBE UMKT'
         return context
 
-class MatkulPengukurPageView(LoginRequiredMixin,TemplateView):
-    template_name = 'main/daftar_mata_kuliah_pengukur.html'
+class ProfilPageView(LoginRequiredMixin,UpdateView):
+    template_name = 'akun/edit_profil.html'
+    success_url = reverse_lazy('akun:profil')
+    model = User
+    success_message = "Profile updated successfully"
+    form_class = ProfileForm
+    second_form_class = ProfilePictureForm    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Mata Kuliah Pengukur | OBE UMKT'
+        context['title'] = 'Edit Profil | OBE UMKT'
+        if self.request.POST:
+            context['picture_form'] = self.second_form_class(self.request.POST, self.request.FILES, instance=self.request.user)
+        else:
+            context['picture_form'] = self.second_form_class()
         return context
 
-class ProfilPageView(LoginRequiredMixin,UpdateView):
-    template_name = 'akun/profil.html'
-    model = User
-    fields = ['nama', 'last_name', 'email']
-    success_url = reverse_lazy('akun:profil')
-    success_message = "Profile updated successfully"
-    
     def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, self.success_message)
-        return response
+        context = self.get_context_data()
+        picture_form = context['picture_form']
+        if picture_form.is_valid():
+            picture_form.save()
+            messages.success(self.request, 'Foto profil berhasil diperbarui.')
+        return super().form_valid(form)
 
     def get_object(self, queryset=None):
         return self.request.user
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['judul'] = 'Halaman Profil'
-        context['nama'] = self.request.user.nama
-        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        context = self.get_context_data()
+        picture_form = context['picture_form']
+        if 'profile' in request.POST:
+            return super().post(request, *args, **kwargs)
+        elif 'picture' in request.POST:
+            if picture_form.is_valid():
+                return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    # def form_valid(self, form):
+    #     response = super().form_valid(form)
+    #     messages.success(self.request, self.success_message)
+    #     return response
+
+    # def get_object(self, queryset=None):
+    #     return self.request.user
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = 'Edit Profil | OBE UMKT'
+    #     context['foto'] = self.request.user.foto_profile.path
+    #     return context
 
 class LogoutView(View):
     def post(self, request, *args, **kwargs):
@@ -94,8 +113,8 @@ class LogoutView(View):
 
 # Create your views here.
 def daftar(request):
+    form = RegisterForm(request.POST or None)
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             token = str(uuid.uuid4())
@@ -107,11 +126,8 @@ def daftar(request):
             messages.success(request, 'Daftar Berhasil! Silahkan Cek Email anda untuk mengaktifkan akun')
             return redirect('akun:login')
         else:
-            messages.success(request, form.errors)
-            return redirect('daftar')
-
-    else:
-        form = RegisterForm()
+            messages.error(request, form.errors)
+            return redirect('akun:daftar')
     context={
         'form': form,
         'title':'Registrasi | OBE UMKT',
@@ -154,11 +170,14 @@ def login(request):
             else:
                 user_id = User.objects.filter(username=username).first()
                 messages.error(request, 'Username atau Password tidak valid')
+                return redirect('akun:login')
                 if user_id:
                     if not user_id.is_active:
                         messages.error(request, 'User Belum Aktif Silahkan Verifikasi Email Dulu')
+                        return redirect('akun:login')
                 else:
                     messages.error(request, 'Username atau Password tidak valid')
+                    return redirect('akun:login')
         else:
             messages.error(request, 'Validasi form error')
         print(form.errors)
@@ -166,7 +185,7 @@ def login(request):
         'form':form,
         'title':'Login | OBE UMKT'
     }
-    return render(request, 'akun/login2.html', context)
+    return render(request, 'akun/login.html', context)
 
 
 def verif_akun(request):
@@ -210,17 +229,24 @@ def lupa_password(request):
             domain = request.get_host()
             ssl = request.is_secure()
             send_forget_password_mail(user_obj.email, token, domain, ssl)
-            messages.info(request, 'Cek email anda untuk mendapatkan akses reset password')
+            messages.success(request, 'Cek email anda untuk mendapatkan akses reset password')
             return redirect('akun:lupa_password')
     
     except Exception as e:
         print (e)    
-    return render(request, 'akun/lupa_password.html', {'form':form,})
+    context = {
+        'form': form,
+        'title': "Kirim Reset Password | OBE UMKT",
+    }
+    return render(request, 'akun/email_reset_password.html', context)
 
 def change_password(request, token):
     try:
         form = ChangePasswordForm(request.POST or None)
-        context = {'form':form}
+        context = {
+            'form':form,
+            'title': 'Reset Password | OBE UMKT',
+            }
         if request.method == 'POST' and form.is_valid():
             new_password = form.cleaned_data.get('new_password')
             confirm_password = form.cleaned_data.get('reconfirm_password')

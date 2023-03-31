@@ -1,0 +1,275 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+{% include "main/sidebar.html" %}
+    <main class="bg-[#F2F7FF] min-h-screen lg:ml-60 flex w-full">
+        <div class="absolute lg:hidden left-0 top-0 h-full w-full bg-black/30 z-[15]" @click="showMenu = false" x-show="showMenu" x-transition.opacity.duration.500ms>
+        </div>
+        <section class="flex-1 py-6 px-4 md:px-4 lg:px-8">
+            <!-- Header -->
+            {% include "main/header.html" %}
+            <div class="mt-8">
+                <div class="flex items-center justify-self-start">
+                    <h3 class="py-4 text-[#435EBE] text-xl font-bold">RPS Mata kuliah: INF1234 - Sistem Operasi</h3>  
+                </div>
+            </div>
+            <div class="flex flex-wrap bg-white shadow rounded-lg py-4 px-3 gap-4 justify-center">
+                <div class="flex-none ml-4">
+                    <p class="font-bold">Program studi</p>
+                    <p class="font-bold">Kode mata kuliah</p>
+                    <p class="font-bold">Nama mata kuliah</p>
+                    <p class="font-bold">Semester</p>
+                    <p class="font-bold">Jumlah SKS</p>
+                </div>
+                <div class="flex-1">
+                    <p>: {{matkul.prodi}}</p>
+                    <p>: {{matkul.kode_matkul}}</p>
+                    <p>: {{matkul.nama}}</p>
+                    <p>: {{matkul.semester}}</p>
+                    <p>: {{matkul.jumlah_sks}}</p>
+                </div>
+                
+            </div>
+            
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-white uppercase bg-[#48B688] text-center">
+                        <tr class="border border-b-0.5">
+                            <th></th>
+                            <th class="py-3">CAPAIAN PEMBELAJARAN LULUSAN YANG DIBEBANKAN KEPADA MATA KULIAH</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Deskripsi Capaian Pembelajaran Lulusan (CPL)
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                CPL
+                            </th>   
+                        </tr>
+                    </thead>
+                    <tbody class="text-black">
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                1
+                            </th>
+                            <td class="px-6 py-4 text-left">
+                                Menguasai prinsip dan teknik perancangan sistem terintegrasi dengan pendekatan sistem
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                2
+                            </th>
+                            <td class="px-6 py-4 text-left">
+                                Menguasai prinsip dan teknik perancangan sistem terintegrasi dengan pendekatan sistem
+                            </td>
+                            <td class="px-6 py-4">
+                                10
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-white uppercase bg-[#48B688] text-center">
+                        <tr class="border border-b-0.5">
+                            <th></th>
+                            <th class="py-3">CAPAIAN PEMBELAJARAN MATA KULIAH YANG DIHARAPKAN</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Deskripsi Capaian Pembelajaran Mata Kuliah (CPMK)
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                CPL
+                            </th>   
+                        </tr>
+                    </thead>
+                    <tbody class="text-black">
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                1
+                            </th>
+                            <td class="px-6 py-4 text-left">
+                                Mahasiswa mampu menjelaskan ...
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                2
+                            </th>
+                            <td class="px-6 py-4 text-left">
+                                Mahasiswa mampu menjelaskan ...
+                            </td>
+                            <td class="px-6 py-4">
+                                10
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                3
+                            </th>
+                            <td class="px-6 py-4 text-left">
+                                Mahasiswa mampu menjelaskan ...
+                            </td>
+                            <td class="px-6 py-4">
+                                14
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-white uppercase bg-[#48B688] text-center">
+                        <tr class="border border-b-0.5">
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th class="py-3">METODE PENILAIAN</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                CPMK
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Bobot
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Observasi
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Partisipasi
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                Unjuk kerja
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                Tes tertulis
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                Tes lisan
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                Angket
+                            </th> 
+                            <th scope="col" class="px-6 py-3">
+                                Total
+                            </th> 
+                        </tr>
+                    </thead>
+                    <tbody class="text-black">
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center items-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                1
+                            </th>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center items-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                2
+                            </th>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-200 text-center items-center">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                3
+                            </th>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                            <td class="px-6 py-4">
+                                20
+                            </td>
+                            <td class="px-6 py-4">
+                                5
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock content %}

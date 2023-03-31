@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'akun',
+    'obe',
 ]
 
 MIDDLEWARE = [
@@ -129,11 +130,14 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'elearningmultimedia@umkt.ac.id'
 EMAIL_HOST_PASSWORD = 'nscxquefsnaplucf'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # custom messages tags
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
-    messages.SUCCESS: 'success',
-    messages.ERROR: 'danger',
+    messages.SUCCESS: 'green',
+    messages.ERROR: 'red',
     messages.WARNING: 'warning',
     messages.INFO: 'info',
 }

@@ -11,7 +11,7 @@ def send_forget_password_mail(email , token, domain, ssl ):
         domain = 'https://' + domain
 
     host = socket.gethostname()
-    subject = 'Reset Password akun Penilian CPL Kurikulum OBE'
+    subject = 'Reset Password akun OBE UMKT'
     message = f" "
     link = domain + '/change-password/'+ token +'/'
     html_message = f"""
@@ -85,7 +85,7 @@ def send_forget_password_mail(email , token, domain, ssl ):
                                   </tr>
                                   <tr>
                                     <td align="center"> <span style="color:#00204A;font-size:22px;line-height: 24px;">
-            Reset Password Akun LPPMEL
+            Reset Password Akun OBE UMKT
           </span>
 
                                     </td>
@@ -101,9 +101,9 @@ def send_forget_password_mail(email , token, domain, ssl ):
                                   </tr>
                                   <tr>
                                     <td align="center"> <span style="color:#00204A;font-size:14px;line-height:24px;">
-            Kami menerima permintaan reset password akun Penilian CPL Kurikulum OBE anda
+            Kami menerima permintaan reset password akun OBE UMKT anda
           </span><p style="color:#00204A;font-size:14px;line-height:24px;">
-            Jika Anda tidak membuat permintaan ini, abaikan saja email ini. Jika tidak, silakan klik tombol di bawah ini untuk reset password akun Penilian CPL Kurikulum OBE anda.
+            Jika Anda tidak membuat permintaan ini, abaikan saja email ini. Jika tidak, silakan klik tombol di bawah ini untuk reset password akun OBE UMKT anda.
           </p>
 
                                     </td>
@@ -113,7 +113,7 @@ def send_forget_password_mail(email , token, domain, ssl ):
                                   </tr>
                                   <tr>
                                     <td valign="top" width="50%" align="center"> <span>
-            <a href="{link}" style="display:block; padding:15px 25px; background-color:#448EF6; color:#ffffff; border-radius:7px; text-decoration:none;">Reset Password akun Penilian CPL Kurikulum OBE</a>
+            <a href="{link}" style="display:block; padding:15px 25px; background-color:#448EF6; color:#ffffff; border-radius:7px; text-decoration:none;">Reset Password akun OBE UMKT</a>
           </span>
 
                                     </td>
@@ -185,7 +185,7 @@ def send_forget_password_mail(email , token, domain, ssl ):
                           </tr>
                           <tr>
                             <td valign="top" align="center"> <span style="font-family: -apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,&#39;Roboto&#39;,&#39;Oxygen&#39;,&#39;Ubuntu&#39;,&#39;Cantarell&#39;,&#39;Fira Sans&#39;,&#39;Droid Sans&#39;,&#39;Helvetica Neue&#39;,sans-serif; color:#9EB0C9; font-size:10px;">&copy;
-                              <a href="https://dev.lastbit.io/" target="_blank" style="color:#999999 !important; text-decoration:none;">LPPMEL 2022</a> 
+                              <a href="https://dev.lastbit.io/" target="_blank" style="color:#999999 !important; text-decoration:none;">OBE UMKT 2023</a> 
                             </span>
 
                             </td>
@@ -225,7 +225,7 @@ def send_verif_mail(email , token, domain, ssl ):
         domain = 'https://' + domain
 
     host = socket.gethostname()
-    subject = 'Verifikasi akun Penilian CPL Kurikulum OBE'
+    subject = 'Verifikasi akun OBE UMKT'
     message = f" "
     link = domain + '/verifikasi-berhasil/'+ token +'/'
     html_message = f'''
@@ -314,9 +314,9 @@ def send_verif_mail(email , token, domain, ssl ):
                                   </tr>
                                   <tr>
                                     <td align="center"> <span style="color:#00204A;font-size:14px;line-height:24px;">
-            Kami menerima permintaan verifikasi akun Penilian CPL Kurikulum OBE anda
+            Kami menerima permintaan verifikasi akun OBE UMKT anda
           </span><p style="color:#00204A;font-size:14px;line-height:24px;">
-            Jika Anda tidak membuat permintaan ini, abaikan saja email ini. Jika tidak, silakan klik tombol di bawah ini untuk verifikasi akun Penilian CPL Kurikulum OBE anda.
+            Jika Anda tidak membuat permintaan ini, abaikan saja email ini. Jika tidak, silakan klik tombol di bawah ini untuk verifikasi akun OBE UMKT anda.
           </p>
 
                                     </td>
@@ -361,7 +361,7 @@ def send_verif_mail(email , token, domain, ssl ):
                             <td colspan="2" height="20"></td>
                           </tr>
                           <tr>
-                            <td colspan="2" align="center"> <span style="font-size:14px; font-weight:500; margin-bottom:10px; color:#7E8A98; font-family: -apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,&#39;Roboto&#39;,&#39;Oxygen&#39;,&#39;Ubuntu&#39;,&#39;Cantarell&#39;,&#39;Fira Sans&#39;,&#39;Droid Sans&#39;,&#39;Helvetica Neue&#39;,sans-serif;">Dapatkan Aplikasi SIPEL LPPMEL terbaru untuk ponsel Anda</span>
+                            <td colspan="2" align="center"> <span style="font-size:14px; font-weight:500; margin-bottom:10px; color:#7E8A98; font-family: -apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,&#39;Roboto&#39;,&#39;Oxygen&#39;,&#39;Ubuntu&#39;,&#39;Cantarell&#39;,&#39;Fira Sans&#39;,&#39;Droid Sans&#39;,&#39;Helvetica Neue&#39;,sans-serif;">Dapatkan Aplikasi OBE UMKT terbaru untuk ponsel Anda</span>
 
                             </td>
                           </tr>
@@ -398,7 +398,7 @@ def send_verif_mail(email , token, domain, ssl ):
                           </tr>
                           <tr>
                             <td valign="top" align="center"> <span style="font-family: -apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,&#39;Roboto&#39;,&#39;Oxygen&#39;,&#39;Ubuntu&#39;,&#39;Cantarell&#39;,&#39;Fira Sans&#39;,&#39;Droid Sans&#39;,&#39;Helvetica Neue&#39;,sans-serif; color:#9EB0C9; font-size:10px;">&copy;
-                              <a href="https://dev.lastbit.io/" target="_blank" style="color:#999999 !important; text-decoration:none;">LPPMEL 2022</a> 
+                              <a href="https://dev.lastbit.io/" target="_blank" style="color:#999999 !important; text-decoration:none;">OBE UMKT 2023</a> 
                             </span>
 
                             </td>
